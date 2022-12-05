@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "1Slg7v60RhM1fBCKexgVsH77OHkp6ENQWopDQ1+h6h8=",
+  "Source": "MarketPlays",
+  "BasePath": "_content/MarketPlays",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MarketPlays\\wwwroot",
+      "Source": "MarketPlays",
+      "ContentRoot": "E:\\GitHub\\MarketPlays\\wwwroot\\",
+      "BasePath": "_content/MarketPlays",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
