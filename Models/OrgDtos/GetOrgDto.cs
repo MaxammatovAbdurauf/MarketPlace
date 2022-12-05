@@ -6,5 +6,4 @@ public class GetOrgDto
 {
     [Required]
     public string? Name { get; set; }
-
 }

@@ -1,6 +1,7 @@
 using MarketPlays.Database;
 using MarketPlays.Entities;
 using MarketPlays.Middlewares;
+using MarketPlays.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSingleton<OrganisationService>();
+builder.Services.AddSingleton<P>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(options =>
