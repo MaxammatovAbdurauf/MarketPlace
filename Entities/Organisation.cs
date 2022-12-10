@@ -4,6 +4,7 @@ public class Organisation
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
+    public string? OrgImagePath { get; set; }
     public EOrgStatus OrgStatus { get; set; }
 
     public virtual ICollection <OrganisationUser>? Users { get; set; }
@@ -12,5 +13,7 @@ public class Organisation
 public enum EOrgStatus
 {
     created,
+    activated,
+    inactivated,
     deleted
 }

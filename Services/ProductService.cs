@@ -1,12 +1,14 @@
 ﻿using Mapster;
 using MarketPlays.Database;
 using MarketPlays.Entities;
+using MarketPlays.Extensions.AddServiceFromAttribute;
 using MarketPlays.Interfaces;
 using MarketPlays.Models.ProductDtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketPlays.Services;
 
+[Scoped]
 public class ProductService : IProductService
 {
     private readonly AppDbContext context;
@@ -22,7 +24,7 @@ public class ProductService : IProductService
             Id = Guid.NewGuid(),
             Name = getProductDto.Name,
             Description = getProductDto.Description,
-            organisationId = orgId
+            organisationId = orgId,
         };
         await context.Products.AddAsync(product);
         await context.SaveChangesAsync();

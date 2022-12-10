@@ -1,0 +1,28 @@
+2022-12-10 11:06:36.614 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-12-10 11:06:37.516 +05:00 [INF] Now listening on: https://localhost:7006
+2022-12-10 11:06:37.525 +05:00 [INF] Now listening on: http://localhost:5006
+2022-12-10 11:06:37.550 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-10 11:06:37.560 +05:00 [INF] Hosting environment: Development
+2022-12-10 11:06:37.566 +05:00 [INF] Content root path: E:\GitHub\MarketPlays\
+2022-12-10 11:06:40.014 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/swagger/index.html - -
+2022-12-10 11:06:40.863 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/_framework/aspnetcore-browser-refresh.js - -
+2022-12-10 11:06:40.866 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/_vs/browserLink - -
+2022-12-10 11:06:40.896 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/swagger/index.html - - - 200 - text/html;charset=utf-8 892.5690ms
+2022-12-10 11:06:40.907 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 43.1394ms
+2022-12-10 11:06:41.213 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 347.8311ms
+2022-12-10 11:06:41.539 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/swagger/v1/swagger.json - -
+2022-12-10 11:06:42.044 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 504.6356ms
+2022-12-10 11:09:25.681 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-12-10 11:09:26.359 +05:00 [INF] Now listening on: https://localhost:7006
+2022-12-10 11:09:26.365 +05:00 [INF] Now listening on: http://localhost:5006
+2022-12-10 11:09:26.393 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-10 11:09:26.398 +05:00 [INF] Hosting environment: Development
+2022-12-10 11:09:26.409 +05:00 [INF] Content root path: E:\GitHub\MarketPlays\
+2022-12-10 11:09:28.461 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/swagger/index.html - -
+2022-12-10 11:09:29.047 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/_framework/aspnetcore-browser-refresh.js - -
+2022-12-10 11:09:29.067 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/_vs/browserLink - -
+2022-12-10 11:09:29.091 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/swagger/index.html - - - 200 - text/html;charset=utf-8 631.3037ms
+2022-12-10 11:09:29.092 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 44.7231ms
+2022-12-10 11:09:29.270 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 203.1499ms
+2022-12-10 11:09:29.449 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7006/swagger/v1/swagger.json - -
+2022-12-10 11:09:29.851 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7006/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 402.2456ms

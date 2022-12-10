@@ -1,4 +1,5 @@
-﻿using MarketPlays.Interfaces;
+﻿using MarketPlays.Filters;
+using MarketPlays.Interfaces;
 using MarketPlays.Models.ProductDtos;
 using MarketPlays.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,43 +8,54 @@ namespace MarketPlays.Controllers;
 
 [Route("[controller]")]
 [ApiController]
+
 public class ProductController : ControllerBase
 {
-    private readonly ProductService productService;
-    public ProductController (ProductService _productService)
+    private readonly IProductService productService;
+    public ProductController (IProductService _productService)
     {
         productService = _productService;
     }
 
     [HttpPost]
-    public async Task AddProduct(GetProductDto getProductDto, Guid productId)
+    [ValidateModel]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AddProduct(GetProductDto getProductDto, Guid organisationId)
     {
         if (!ModelState.IsValid) throw new Exception();
-        await productService.AddProduct(getProductDto, productId);
+        await productService.AddProduct(getProductDto, organisationId);
+        return Ok();
     }
 
     [HttpDelete]
-    public async Task DeleteProduct(Guid Id)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> DeleteProduct(Guid Id)
     {
         await productService.DeleteProduct(Id);
+        return Ok();
     }
 
     [HttpGet("all")]
-    public async Task<List<SendProductDto>> GetProductList()
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<SendProductDto>))]
+    public async Task<ActionResult<List<SendProductDto>>> GetProductList()
     {
-        return await productService.GetProductList();
+        return  Ok(await productService.GetProductList());
     }
 
     [HttpGet("one")]
-    public async Task<SendProductDto> GetProduct(Guid id)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SendProductDto))]
+    public async Task<ActionResult<SendProductDto>> GetProduct(Guid id)
     {
-        return await productService.GetProduct(id);
+        return Ok(await productService.GetProduct(id));
     }
 
     [HttpPut]
-    public async Task UpdateProduct(UpdateProductDto updateProductDto, Guid productId)
+    [ValidateModel]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto, Guid productId)
     {
         if (!ModelState.IsValid) throw new Exception();
         await productService.UpdateProduct(productId, updateProductDto);
+        return Ok();
     }
 }

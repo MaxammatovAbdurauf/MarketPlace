@@ -21,12 +21,19 @@
     </PackageReference>
     <PackageReference Include="Npgsql" Version="6.0.7" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Telegram" Version="0.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Database\Configurations\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\CategoryImage\" />
+    <Folder Include="wwwroot\OrganisationImage\" />
+    <Folder Include="wwwroot\ProductImage\" />
+    <Folder Include="wwwroot\ProfileImage\" />
   </ItemGroup>
 
 </Project>

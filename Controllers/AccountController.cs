@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MarketPlays.Entities;
+using MarketPlays.Filters;
 using MarketPlays.Models.UserDtos;
 using Microsoft.EntityFrameworkCore;
 using Mapster;
@@ -21,14 +22,15 @@ public class AccountController : ControllerBase
         userManager   = _userManager;
     }
 
+    
     [HttpPost("SignUp")]
+    [ValidateModel]
+    [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(SendUserDto))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> SignUp(SignUpUserDto signUpUserDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest("Dto not valid");
-
-        if (await userManager.Users.AnyAsync(x => x.UserName == signUpUserDto.UserName))
-            return BadRequest("Username is busy");
+        if (await userManager.Users.AnyAsync(x => x.FirstName == signUpUserDto.FirstName))
+            return BadRequest("This username is busy");
 
         var user = signUpUserDto.Adapt<AppUser>();
 
@@ -38,15 +40,15 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("SignIn")]
+    [ValidateModel]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> SignIn(SignInUserDto signInUserDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest("Dto not valid");
+        if (!await userManager.Users.AnyAsync(x => x.FirstName == signInUserDto.FirstName))
+            return BadRequest("Firstname is incorrect");
 
-        if (!await userManager.Users.AnyAsync(x => x.UserName == signInUserDto.UserName))
-            return BadRequest("Username is incorrect");
-
-        var user = await userManager.Users.FirstAsync(x => x.UserName == signInUserDto.UserName);
+        var user = await userManager.Users.FirstAsync(x => x.FirstName == signInUserDto.FirstName);
 
         if (user.Password != signInUserDto.Password)
             return BadRequest("Password is incorrect");

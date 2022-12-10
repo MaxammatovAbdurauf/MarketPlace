@@ -6,4 +6,5 @@ public class GetOrgDto
 {
     [Required]
     public string? Name { get; set; }
+    public IFormFile? OrganisationImage { get; set; }
 }

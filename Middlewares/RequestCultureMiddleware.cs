@@ -1,16 +1,27 @@
-﻿using System.Globalization;
+﻿using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace MarketPlays.Middlewares;
 
-public class RequestCultureMiddleware
+public static class RequestCultureMiddleware
 {
-    private readonly RequestDelegate next;
+   /* private readonly RequestDelegate next;
     public RequestCultureMiddleware (RequestDelegate _next)
     {
         next = _next;
+    }*/
+    public static void _UseRequestLocalization(this WebApplication app)
+    {
+        app.UseRequestLocalization(options =>
+        {
+            options.DefaultRequestCulture = new RequestCulture("eng-US");
+            options.SupportedUICultures = new List<CultureInfo> { new CultureInfo("eng-US") };
+            options.SupportedCultures = new List<CultureInfo> { new CultureInfo("eng-US") };
+            options.RequestCultureProviders = new List<IRequestCultureProvider>();
+        });
     }
 
-    public async Task Invoke (HttpContext context)
+   /* public async Task Invoke (HttpContext context)
     {
         if (context.Request.Query.ContainsKey ("lan"))
         {
@@ -25,5 +36,5 @@ public class RequestCultureMiddleware
             CultureInfo.CurrentUICulture = culture;
         }   
         await next(context);
-    }
+    }*/
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -6,10 +7,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MarketPlays.DataBase.Migrations
 {
-    public partial class init : Migration
+    public partial class init3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("create extension hstore");
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -196,6 +198,7 @@ namespace MarketPlays.DataBase.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+         
 
             migrationBuilder.CreateTable(
                 name: "Products",
@@ -204,6 +207,7 @@ namespace MarketPlays.DataBase.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
+                    Properties = table.Column<Dictionary<string, string>>(type: "hstore", nullable: true),
                     organisationId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -215,7 +219,7 @@ namespace MarketPlays.DataBase.Migrations
                         principalTable: "Organisations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
+                }) ;
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

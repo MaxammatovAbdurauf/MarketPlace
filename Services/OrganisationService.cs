@@ -1,41 +1,42 @@
-﻿using MarketPlays.Database;
+﻿using Mapster;
+using MarketPlays.Database;
+using MarketPlays.Entities;
+using MarketPlays.Extensions.AddServiceFromAttribute;
 using MarketPlays.Interfaces;
 using MarketPlays.Models.OrgDtos;
-using Mapster;
-using MarketPlays.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace MarketPlays.Services;
 
+[Scoped]
 public class OrganisationService : IOrganisationService
 {
     private readonly AppDbContext context;
- 
     public OrganisationService(AppDbContext _context)
     {
-        context     = _context;
+        context = _context;
     }
 
     public async Task AddOrganisation(GetOrgDto getOrgDto, ClaimsPrincipal principal)
     {
         var orgId = Guid.NewGuid();
         var userId = Guid.Parse(principal.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var imagePath = FileService.SaveImage(getOrgDto.OrganisationImage, "OrganisationImage");
 
         var org = new Organisation
         {
             Id = orgId,
             Name = getOrgDto.Name,
             OrgStatus = EOrgStatus.created,
-            Users =  new List<OrganisationUser>
+            OrgImagePath = imagePath,
+            Users = new List<OrganisationUser>
             {
                 new OrganisationUser
-                { 
+                {
                     AppUserId      = userId,
                     OrganisationId =  orgId,
-                    appUserRole    = EAppUserRole.owner 
+                    appUserRole    = EAppUserRole.owner
                 }
             }
         };
@@ -44,16 +45,17 @@ public class OrganisationService : IOrganisationService
         await context.SaveChangesAsync();
     }
 
-    public async Task DeleteOrganisation(Guid Id)
+    public async Task DeleteOrganisation(Guid productId)
     {
-        if (!await context.Organisations.AnyAsync(o => o.Id == Id)) throw new Exception();
-        context.Remove(Id);
+        if (!await context.Organisations.AnyAsync(o => o.Id == productId)) throw new Exception();
+        var org = await context.Organisations.FirstAsync(o => o.Id == productId);
+        context.Remove(org);
         await context.SaveChangesAsync();
     }
 
-    public async Task<SendOrgDto> GetOrganisation(Guid Id)
+    public async Task<SendOrgDto> GetOrganisation(Guid productId)
     {
-        var orgs = await context.Organisations.FirstAsync(o => o.Id == Id);
+        var orgs = await context.Organisations.FirstAsync(o => o.Id == productId);
         return orgs.Adapt<SendOrgDto>();
     }
 
@@ -63,10 +65,12 @@ public class OrganisationService : IOrganisationService
         return orgs;
     }
 
-    public async Task UpdateOrganisation(Guid Id, UpdateOrgDto updateOrgDto)
+    public async Task UpdateOrganisation(Guid productId, UpdateOrgDto updateOrgDto)
     {
-        var org = await context.Organisations.FirstAsync(o => o.Id == Id);
+        var org = await context.Organisations.FirstAsync(o => o.Id == productId);
+        var imagePath = FileService.SaveImage(updateOrgDto.OrganisationImage, "OrganisationImage");
         org.Name = updateOrgDto.Name;
+        org.OrgImagePath = imagePath;
         await context.SaveChangesAsync();
     }
 }

@@ -43,3 +43,17 @@ E:\GitHub\MarketPlays\obj\Debug\net6.0\refint\MarketPlays.dll
 E:\GitHub\MarketPlays\obj\Debug\net6.0\MarketPlays.pdb
 E:\GitHub\MarketPlays\obj\Debug\net6.0\MarketPlays.genruntimeconfig.cache
 E:\GitHub\MarketPlays\obj\Debug\net6.0\ref\MarketPlays.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Flurl.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Flurl.Http.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.AspNetCore.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\Serilog.Sinks.File.dll
+E:\GitHub\MarketPlays\bin\Debug\net6.0\TelegramSink.dll

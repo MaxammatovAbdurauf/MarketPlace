@@ -17,7 +17,7 @@ public class ExceptionHandlerMiddleware
         catch (Exception ex)
         {
             context.Response.StatusCode = StatusCodes.Status400BadRequest;
-            await context.Response.WriteAsJsonAsync($"{ex} error occured");
+            await context.Response.WriteAsJsonAsync(ex.Message);
         }
     }
 }

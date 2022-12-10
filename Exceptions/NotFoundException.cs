@@ -1,6 +1,11 @@
 ﻿namespace MarketPlays.Exceptions;
 
-public class notFoundException : Exception
+public class NotFoundException : Exception
 {
-    public notFoundException (string message) : base (message) {  }
+    public NotFoundException (string message) : base (message) {  }
+}
+
+public class NotFoundException<T> : NotFoundException
+{
+    public NotFoundException () : base ($"Given object {typeof(T).Name} is not found") {  }
 }
